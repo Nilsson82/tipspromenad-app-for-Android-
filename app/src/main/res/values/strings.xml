@@ -12,4 +12,5 @@
     &#10;&#10;Note: The app requires internet access because the questions are hosted on a webpage. If your phone does not support the app, you can also access the questions directly from the webpage:
     &lt;a href="https://nilsson82.github.io/TipspromenadQuizWebPage/"&gt;Visit Quiz Webpage&lt;/a&gt;
     </string>
+    <string name="info_about_tipspromenad_quiz">Info about Tipspromenad Quiz</string>
 </resources>

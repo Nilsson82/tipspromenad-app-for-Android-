@@ -1,6 +1,9 @@
 package com.nilsson.tipspromenad
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.webkit.WebViewClient
 import androidx.fragment.app.Fragment
@@ -18,8 +21,25 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    @Deprecated("Deprecated in Java")
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        menu.clear()
+        inflater.inflate(R.menu.menu_main, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_info -> {
+                findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
+                true
+            }
+            else -> false
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        setHasOptionsMenu(true)
 
         _binding = FragmentFirstBinding.bind(view)
 
@@ -28,11 +48,6 @@ class FirstFragment : Fragment(R.layout.fragment_first) {
             webViewClient = WebViewClient() // ensures links open in WebView
             settings.javaScriptEnabled = true
             loadUrl("https://nilsson82.github.io/TipspromenadQuizWebPage/")
-        }
-
-        // Button navigation (already in your code)
-        binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
         }
     }
 
